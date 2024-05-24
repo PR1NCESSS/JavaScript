@@ -1,1 +1,1 @@
-Решение задачи по Java Script с сайт code.mu
+Решение задач по JavaScript с сайта code.mu
