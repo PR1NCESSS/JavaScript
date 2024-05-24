@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Практика JavaScript</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: sans-serif;
+      }
+      p {
+        margin-bottom: 5px;
+      }
+      h4 {
+        margin: 0;
+      }
+      .title {
+        text-align: center;
+      }
+      .title span {
+        font-size: 24px;
+        color: #ccc;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1220px;
+        padding: 0 10px;
+        margin: 0 auto;
+        gap: 40px;
+      }
+      .task {
+        border-bottom: 2px solid #000;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+      }
+      .task:last-child {
+        border: none;
+      }
+      .task__title {
+        margin-bottom: 10px;
+      }
+      #field48 td,
+      #field49 td,
+      #field50 td,
+      #field51 td {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .red {
+        background: red;
+      }
+
+      .green {
+        background: green;
+      }
+
+      .blue {
+        background: blue;
+      }
+
+      #parent,
+      #parent58,
+      #parent59,
+      #parent61,
+      #parent62 {
+        text-align: center;
+      }
+
+      #calendar,
+      #calendar58,
+      #calendar59,
+      #calendar61,
+      #calendar62 {
+        display: inline-block;
+      }
+
+      #calendar td,
+      #calendar th,
+      #calendar58 th,
+      #calendar59 th,
+      #calendar58 td,
+      #calendar59 td,
+      #calendar61 td,
+      #calendar61 th,
+      #calendar62 td,
+      #calendar62 th {
+        padding: 5px 12px;
+        border: 1px solid black;
+        text-align: center;
+      }
+
+      #calendar61 .info,
+      #calendar62 .info,
+      #calendar62 .nav {
+        text-align: center;
+      }
+
+      #calendar62 a {
+        color: blue;
+        font-size: 25px;
+        text-decoration: none;
+      }
+      #calendar62 a:hover {
+        color: red;
+      }
+
+      #calendar62 .active {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">
+      Практика JavaScript <sup><span>(Макаров Т. С.)</span></sup>
+    </h1>
+    <div class="container">
+      <div class="task">
+        <h4 class="task__title">
+          48 - Окраска ячеек в разные цвета. Скопируйте себе приведенный HTML и
+          CSS коды. Напишите код, который создаст таблицу заданного размера.
+          Реализуйте описанную функцию. Потестируйте ее работу. С помощью
+          созданной вами функции сделайте так, чтобы ячейки при создании таблицы
+          окрашивались в случайные цвета.
+        </h4>
+        <div class="task__decision">
+          <table id="field48"></table>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          49 - Смена цвета ячеек. С помощью созданной вами функции сделайте так,
+          чтобы каждая ячейка при клике на нее меняла свой цвет на следующий.
+        </h4>
+        <div class="task__decision">
+          <table id="field49"></table>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          50 - Победа в игре смена цветов на JavaScript. Реализуйте поставленную
+          задачу.
+        </h4>
+        <div class="task__decision">
+          <table id="field50"></table>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          51 - Вывод количества ходов в игре смена цветов на JavaScript.
+          Реализуйте поставленную задачу.
+        </h4>
+        <div class="task__decision">
+          <p id="result51"></p>
+          <table id="field51"></table>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          52 - Календарь на JavaScript. Скопируйте себе представленные мною
+          заготовки кода.
+        </h4>
+        <div class="task__decision">
+          <div id="parent">
+            <div id="calendar">
+              <table>
+                <thead>
+                  <tr>
+                    <th>пн</th>
+                    <th>вт</th>
+                    <th>ср</th>
+                    <th>чт</th>
+                    <th>пт</th>
+                    <th>сб</th>
+                    <th>вс</th>
+                  </tr>
+                </thead>
+                <tbody class="body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          54 - Заполнение массива числами в календаре на JavaScript. Реализуйте
+          указанные функции и выведите в консоль массив от 1 до последнего дня
+          месяца.
+        </h4>
+        <div class="task__decision">
+          <p>Смотреть консоль</p>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          55 - Дни недели первого и последнего дней месяца. Реализуйте указанные
+          функции и проверьте их работу.
+        </h4>
+        <div class="task__decision">
+          <p>Смотреть консоль</p>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          56 - Нормализация массива в календаре на JavaScript. Реализуйте
+          описанную функцию normalize и проверьте ее работу.
+        </h4>
+        <div class="task__decision">
+          <p>Смотреть консоль</p>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          57 - Разбиение массива на двухмерный в календаре на JavaScript.
+          Реализуйте описанную функцию chunk и проверьте ее работу.
+        </h4>
+        <div class="task__decision">
+          <p>Смотреть консоль</p>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          58 - Создание таблицы в календаре на JavaScript. Реализуйте описанную
+          функцию createTable. Соберите весь код вместе и выведите на экран
+          календарь за текущий месяц.
+        </h4>
+        <div class="task__decision">
+          <div id="parent58">
+            <div id="calendar58">
+              <table>
+                <thead>
+                  <tr>
+                    <th>пн</th>
+                    <th>вт</th>
+                    <th>ср</th>
+                    <th>чт</th>
+                    <th>пт</th>
+                    <th>сб</th>
+                    <th>вс</th>
+                  </tr>
+                </thead>
+                <tbody class="body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          59 - Функция для формирования календаря на JavaScript. Сделайте
+          описанное.
+        </h4>
+        <div class="task__decision">
+          <div id="parent59">
+            <div id="calendar59">
+              <table>
+                <thead>
+                  <tr>
+                    <th>пн</th>
+                    <th>вт</th>
+                    <th>ср</th>
+                    <th>чт</th>
+                    <th>пт</th>
+                    <th>сб</th>
+                    <th>вс</th>
+                  </tr>
+                </thead>
+                <tbody class="body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          61 - Вывод месяца и года в календаре на JavaScript. Реализуйте
+          описанный вывод текущего месяца и дня.
+        </h4>
+        <div class="task__decision">
+          <div id="parent61">
+            <div id="calendar61">
+              <div class="info"></div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>пн</th>
+                    <th>вт</th>
+                    <th>ср</th>
+                    <th>чт</th>
+                    <th>пт</th>
+                    <th>сб</th>
+                    <th>вс</th>
+                  </tr>
+                </thead>
+                <tbody class="body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">
+          62 - Стрелки для смены месяца в календаре на JavaScript. Реализуйте
+          работу кнопок смены месяца. Сделайте так, чтобы информация над
+          календарем соответствовала отображаемому месяцу и году.
+        </h4>
+        <div class="task__decision">
+          <div id="parent62">
+            <div id="calendar62">
+              <div class="info"></div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>пн</th>
+                    <th>вт</th>
+                    <th>ср</th>
+                    <th>чт</th>
+                    <th>пт</th>
+                    <th>сб</th>
+                    <th>вс</th>
+                  </tr>
+                </thead>
+                <tbody class="body"></tbody>
+              </table>
+              <div class="nav">
+                <a href="#" class="prev">←</a>
+                <a href="#" class="next">→</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 48
+      let rows48 = 3;
+      let cols48 = 3;
+      function createTable48(rows, cols) {
+        let table48 = document.getElementById("field48");
+        for (let i = 0; i < rows; i++) {
+          let row = document.createElement("tr");
+          for (let j = 0; j < cols; j++) {
+            let cell = document.createElement("td");
+            cell.classList.add(getRandomElement48(colors48));
+            row.appendChild(cell);
+          }
+          table48.appendChild(row);
+        }
+      }
+      let colors48 = ["red", "green", "blue"];
+      function getRandomElement48(array) {
+        let randomIndex48 = Math.floor(Math.random() * array.length);
+        return array[randomIndex48];
+      }
+      createTable48(rows48, cols48);
+
+      // 49
+      let rows49 = 3;
+      let cols49 = 3;
+      let colors49 = ["red", "green", "blue"];
+      function createTable49(rows, cols) {
+        let table49 = document.getElementById("field49");
+        for (let i = 0; i < rows; i++) {
+          let row = document.createElement("tr");
+          for (let j = 0; j < cols; j++) {
+            let cell = document.createElement("td");
+            cell.classList.add(getRandomElement49(colors49));
+            cell.addEventListener("click", () => {
+              changeColor49(cell);
+            });
+            row.appendChild(cell);
+          }
+          table49.appendChild(row);
+        }
+      }
+
+      function changeColor49(cell) {
+        let currentColor49 = cell.className;
+        let currentIndex49 = colors49.indexOf(currentColor49);
+        let nextIndex49 = (currentIndex49 + 1) % colors49.length;
+        cell.className = colors49[nextIndex49];
+      }
+
+      function getRandomElement49(array) {
+        let randomIndex49 = Math.floor(Math.random() * array.length);
+        return array[randomIndex49];
+      }
+
+      createTable49(rows49, cols49);
+
+      // 50
+      let rows50 = 3;
+      let cols50 = 3;
+      let colors50 = ["red", "green", "blue"];
+      function createTable50(rows, cols) {
+        let table50 = document.getElementById("field50");
+        for (let i = 0; i < rows; i++) {
+          let row = document.createElement("tr");
+          for (let j = 0; j < cols; j++) {
+            let cell = document.createElement("td");
+            cell.classList.add(getRandomElement50(colors50));
+            cell.addEventListener("click", () => {
+              changeColor50(cell);
+            });
+            row.appendChild(cell);
+          }
+          table50.appendChild(row);
+        }
+      }
+
+      function changeColor50(cell) {
+        let currentColor50 = cell.className;
+        let currentIndex50 = colors50.indexOf(currentColor50);
+        let nextIndex50 = (currentIndex50 + 1) % colors50.length;
+        cell.className = colors50[nextIndex50];
+        if (checkVictory50()) {
+          alert("Поздравляем, вы победили!");
+        }
+      }
+
+      function getRandomElement50(array) {
+        let randomIndex50 = Math.floor(Math.random() * array.length);
+        return array[randomIndex50];
+      }
+
+      function checkVictory50() {
+        let cells50 = document.querySelectorAll("#field50 td");
+        let firstCellClass50 = cells50[0].className;
+        for (let i = 1; i < cells50.length; i++) {
+          if (cells50[i].className !== firstCellClass50) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      createTable50(rows50, cols50);
+
+      // 51
+      let rows51 = 3;
+      let cols51 = 3;
+      let clickCount51 = 0;
+      let colors51 = ["red", "green", "blue"];
+      function createTable51(rows, cols) {
+        let table51 = document.getElementById("field51");
+        for (let i = 0; i < rows; i++) {
+          let row = document.createElement("tr");
+          for (let j = 0; j < cols; j++) {
+            let cell = document.createElement("td");
+            cell.classList.add(getRandomElement51(colors51));
+            cell.addEventListener("click", () => {
+              changeColor51(cell);
+              updateClicksCounter(++clickCount51);
+            });
+            row.appendChild(cell);
+          }
+          table51.appendChild(row);
+        }
+      }
+
+      function changeColor51(cell) {
+        let currentColor51 = cell.className;
+        let currentIndex51 = colors51.indexOf(currentColor51);
+        let nextIndex51 = (currentIndex51 + 1) % colors51.length;
+        cell.className = colors51[nextIndex51];
+        if (checkVictory51()) {
+          alert("Поздравляем, вы победили!");
+        }
+      }
+
+      function getRandomElement51(array) {
+        let randomIndex51 = Math.floor(Math.random() * array.length);
+        return array[randomIndex51];
+      }
+
+      function checkVictory51() {
+        let cells51 = document.querySelectorAll("#field51 td");
+        let firstCellClass51 = cells51[0].className;
+        for (let i = 1; i < cells51.length; i++) {
+          if (cells51[i].className !== firstCellClass51) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function updateClicksCounter(count) {
+        let clicksCounter = document.getElementById("result51");
+        clicksCounter.textContent = "Количество кликов: " + count;
+      }
+
+      createTable51(rows51, cols51);
+
+      // 54
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth();
+      function range54(count) {
+        let arr = [];
+        for (let i54 = 1; i54 <= count; i54++) {
+          arr.push(i54);
+        }
+        return arr;
+      }
+
+      function getLastDay54(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+      }
+
+      let lastDay54 = getLastDay54(year, month);
+      let daysArray54 = range54(lastDay54);
+      console.log(daysArray54);
+
+      // 55
+      function getFirstWeekDay55(year, month) {
+        return (new Date(year, month, 1).getDay() + 6) % 7;
+      }
+
+      function getLastWeekDay55(year, month) {
+        return (new Date(year, month + 1, 0).getDay() + 6) % 7;
+      }
+
+      let firstWeekDay55 = getFirstWeekDay55(year, month);
+      let lastWeekDay55 = getLastWeekDay55(year, month);
+      console.log("День недели первого дня месяца:", firstWeekDay55);
+      console.log("День недели последнего дня месяца:", lastWeekDay55);
+
+      // 56
+      function normalize(arr, left, right) {
+        for (let i = 0; i < left; i++) {
+          arr.unshift("");
+        }
+        for (let i = 0; i < right; i++) {
+          arr.push("");
+        }
+        return arr;
+      }
+
+      let res = normalize(daysArray54, firstWeekDay55, 6 - lastWeekDay55);
+      console.log(res);
+
+      // 57
+      function chunk(arr, n) {
+        let result = [];
+        for (let i = 0; i < arr.length; i += n) {
+          result.push(arr.slice(i, i + n));
+        }
+        return result;
+      }
+
+      let chunkedArray = chunk(res, 7);
+      console.log("Двумерный массив (недели):", chunkedArray);
+
+      // 58_1
+      function createTable(parent, arr) {
+        parent.innerHTML = "";
+        arr.forEach((week) => {
+          let tr = document.createElement("tr");
+          week.forEach((day) => {
+            let td = document.createElement("td");
+            td.textContent = day;
+            tr.appendChild(td);
+          });
+          parent.appendChild(tr);
+        });
+      }
+
+      // 58_2
+      let calendar58_2 = document.querySelector("#calendar58");
+      let body58_2 = calendar58_2.querySelector(".body");
+      let date58_2 = new Date();
+      let year58_2 = date58_2.getFullYear();
+      let month58_2 = date58_2.getMonth();
+      function range58_2(count) {
+        let arr = [];
+        for (let i = 1; i <= count; i++) {
+          arr.push(i);
+        }
+        return arr;
+      }
+
+      function getLastDay58_2(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+      }
+
+      function getFirstWeekDay58_2(year, month) {
+        return (new Date(year, month, 1).getDay() + 6) % 7;
+      }
+
+      function getLastWeekDay58_2(year, month) {
+        return (new Date(year, month + 1, 0).getDay() + 6) % 7;
+      }
+
+      function normalize58_2(arr, left, right) {
+        for (let i = 0; i < left; i++) {
+          arr.unshift("");
+        }
+        for (let i = 0; i < right; i++) {
+          arr.push("");
+        }
+        return arr;
+      }
+
+      function chunk58_2(arr, n) {
+        let result = [];
+        for (let i = 0; i < arr.length; i += n) {
+          result.push(arr.slice(i, i + n));
+        }
+        return result;
+      }
+
+      function createTable58_2(parent, arr) {
+        parent.innerHTML = "";
+        arr.forEach((week) => {
+          let tr = document.createElement("tr");
+          week.forEach((day) => {
+            let td = document.createElement("td");
+            td.textContent = day;
+            tr.appendChild(td);
+          });
+          parent.appendChild(tr);
+        });
+      }
+
+      let lastDay58_2 = getLastDay58_2(year58_2, month58_2);
+      let daysArray58_2 = range58_2(lastDay58_2);
+
+      let firstWeekDay58_2 = getFirstWeekDay58_2(year58_2, month58_2);
+      let lastWeekDay58_2 = getLastWeekDay58_2(year58_2, month58_2);
+
+      let normalizedArray58_2 = normalize58_2(
+        daysArray58_2,
+        firstWeekDay58_2,
+        6 - lastWeekDay58_2
+      );
+      let chunkedArray58_2 = chunk58_2(normalizedArray58_2, 7);
+
+      createTable58_2(body58_2, chunkedArray58_2);
+
+      // 59
+      function range59(count) {
+        let arr = [];
+        for (let i = 1; i <= count; i++) {
+          arr.push(i);
+        }
+        return arr;
+      }
+
+      function getLastDay59(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+      }
+
+      function getFirstWeekDay59(year, month) {
+        return (new Date(year, month, 1).getDay() + 6) % 7;
+      }
+
+      function getLastWeekDay59(year, month) {
+        return (new Date(year, month + 1, 0).getDay() + 6) % 7;
+      }
+
+      function normalize59(arr, left, right) {
+        for (let i = 0; i < left; i++) {
+          arr.unshift("");
+        }
+        for (let i = 0; i < right; i++) {
+          arr.push("");
+        }
+        return arr;
+      }
+
+      function chunk59(arr, n) {
+        let result = [];
+        for (let i = 0; i < arr.length; i += n) {
+          result.push(arr.slice(i, i + n));
+        }
+        return result;
+      }
+
+      function createTable59(parent, arr) {
+        parent.innerHTML = "";
+        arr.forEach((week) => {
+          let tr = document.createElement("tr");
+          week.forEach((day) => {
+            let td = document.createElement("td");
+            td.textContent = day;
+            tr.appendChild(td);
+          });
+          parent.appendChild(tr);
+        });
+      }
+
+      function draw59(body, year, month) {
+        let arr59 = range59(getLastDay59(year, month));
+        let firstWeekDay59 = getFirstWeekDay59(year, month);
+        let lastWeekDay59 = getLastWeekDay59(year, month);
+        let nums59 = chunk59(
+          normalize59(arr59, firstWeekDay59, 6 - lastWeekDay59),
+          7
+        );
+        createTable59(body59, nums59);
+      }
+
+      let calendar59 = document.querySelector("#calendar59");
+      let body59 = calendar59.querySelector(".body");
+      let date59 = new Date();
+      let year59 = date59.getFullYear();
+      let month59 = date59.getMonth();
+
+      draw59(body59, year59, month59);
+
+      // 61
+      function range61(count) {
+        let arr = [];
+        for (let i = 1; i <= count; i++) {
+          arr.push(i);
+        }
+        return arr;
+      }
+
+      function getLastDay61(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+      }
+
+      function getFirstWeekDay61(year, month) {
+        return (new Date(year, month, 1).getDay() + 6) % 7;
+      }
+
+      function getLastWeekDay61(year, month) {
+        return (new Date(year, month + 1, 0).getDay() + 6) % 7;
+      }
+
+      function normalize61(arr, left, right) {
+        for (let i = 0; i < left; i++) {
+          arr.unshift("");
+        }
+        for (let i = 0; i < right; i++) {
+          arr.push("");
+        }
+        return arr;
+      }
+
+      function chunk61(arr, n) {
+        let result = [];
+        for (let i = 0; i < arr.length; i += n) {
+          result.push(arr.slice(i, i + n));
+        }
+        return result;
+      }
+
+      function createTable61(parent, arr) {
+        parent.innerHTML = "";
+        arr.forEach((week) => {
+          let tr = document.createElement("tr");
+          week.forEach((day) => {
+            let td = document.createElement("td");
+            td.textContent = day;
+            tr.appendChild(td);
+          });
+          parent.appendChild(tr);
+        });
+      }
+
+      function draw61(body, year, month) {
+        let arr61 = range61(getLastDay61(year, month));
+        let firstWeekDay61 = getFirstWeekDay61(year, month);
+        let lastWeekDay61 = getLastWeekDay61(year, month);
+        let nums61 = chunk61(
+          normalize61(arr61, firstWeekDay61, 6 - lastWeekDay61),
+          7
+        );
+        createTable61(body61, nums61);
+      }
+
+      let calendar61 = document.querySelector("#calendar61");
+      let body61 = calendar61.querySelector(".body");
+      let date61 = new Date();
+      let year61 = date61.getFullYear();
+      let month61 = date61.getMonth();
+      draw61(body61, year61, month61);
+
+      let monthNames61 = [
+        "Янв",
+        "Фев",
+        "Мар",
+        "Апр",
+        "Май",
+        "Июн",
+        "Июл",
+        "Авг",
+        "Сен",
+        "Окт",
+        "Ноя",
+        "Дек",
+      ];
+      let month611 = monthNames61[date61.getMonth()];
+      let year611 = date61.getFullYear();
+      let infoElement61 = document.querySelector("#calendar61 .info");
+      infoElement61.textContent = month611 + " - " + year611;
+
+      // 62
+      function range62(count) {
+        let arr = [];
+        for (let i = 1; i <= count; i++) {
+          arr.push(i);
+        }
+        return arr;
+      }
+      function getLastDay62(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+      }
+      function getFirstWeekDay62(year, month) {
+        return (new Date(year, month, 1).getDay() + 6) % 7;
+      }
+      function getLastWeekDay62(year, month) {
+        return (new Date(year, month + 1, 0).getDay() + 6) % 7;
+      }
+      function normalize62(arr, left, right) {
+        for (let i = 0; i < left; i++) {
+          arr.unshift("");
+        }
+        for (let i = 0; i < right; i++) {
+          arr.push("");
+        }
+        return arr;
+      }
+      function chunk62(arr, n) {
+        let result = [];
+        for (let i = 0; i < arr.length; i += n) {
+          result.push(arr.slice(i, i + n));
+        }
+        return result;
+      }
+      function createTable62(parent, arr) {
+        parent.innerHTML = "";
+        arr.forEach((week) => {
+          let tr = document.createElement("tr");
+          week.forEach((day) => {
+            let td = document.createElement("td");
+            td.textContent = day;
+            tr.appendChild(td);
+          });
+          parent.appendChild(tr);
+        });
+      }
+      function draw62(parent, year, month) {
+        let arr62 = range62(getLastDay62(year, month));
+        let firstWeekDay62 = getFirstWeekDay62(year, month);
+        let lastWeekDay62 = getLastWeekDay62(year, month);
+        let nums62 = chunk62(
+          normalize62(arr62, firstWeekDay62, 6 - lastWeekDay62),
+          7
+        );
+        createTable62(parent, nums62);
+      }
+      let calendar62 = document.querySelector("#calendar62");
+      let body62 = calendar62.querySelector(".body");
+      let date62 = new Date();
+      let year62 = date62.getFullYear();
+      let month62 = date62.getMonth();
+      draw62(body62, year62, month62);
+      let monthNames62 = [
+        "Янв",
+        "Фев",
+        "Мар",
+        "Апр",
+        "Май",
+        "Июн",
+        "Июл",
+        "Авг",
+        "Сен",
+        "Окт",
+        "Ноя",
+        "Дек",
+      ];
+      let month622 = monthNames62[date62.getMonth()];
+      let year622 = date62.getFullYear();
+      let infoElement62 = document.querySelector("#calendar62 .info");
+      infoElement62.textContent = month622 + " - " + year622;
+      let prev = document.querySelector("#calendar62 .prev");
+      let next = document.querySelector("#calendar62 .next");
+      prev.addEventListener("click", function (event) {
+        event.preventDefault();
+        let newYear = year62;
+        let newMonth = month62 - 1;
+        if (newMonth < 0) {
+          newMonth = 11;
+          newYear--;
+        }
+        year62 = newYear;
+        month62 = newMonth;
+        draw62(body62, newYear, newMonth);
+        updateInfo(newYear, newMonth);
+      });
+      next.addEventListener("click", function (event) {
+        event.preventDefault();
+        let newYear = year62;
+        let newMonth = month62 + 1;
+        if (newMonth > 11) {
+          newMonth = 0;
+          newYear++;
+        }
+        year62 = newYear;
+        month62 = newMonth;
+        draw62(body62, newYear, newMonth);
+        updateInfo(newYear, newMonth);
+      });
+      function updateInfo(year, month) {
+        let monthName = monthNames62[month];
+        let infoElement = document.querySelector("#calendar62 .info");
+        infoElement.textContent = monthName + " - " + year;
+      }
+    </script>
+  </body>
+</html>

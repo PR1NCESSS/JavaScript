@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Практика JavaScript</title>
+    <style>
+       *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body{
+        font-family: sans-serif;
+      }
+      p{
+        margin-bottom: 5px;
+      }
+      h4{
+        margin: 0;
+      }
+      .title{
+        text-align: center;
+      }
+      .title span{
+        font-size: 24px;
+        color: #ccc;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1220px;
+        padding: 0 10px;
+        margin: 0 auto;
+        gap: 40px;
+      }
+      .task {
+        border-bottom: 2px solid #000;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+      }
+      .task:last-child{
+        border: none;
+      }
+      .task__title {
+        margin-bottom: 10px;
+      }
+      #input18_1,
+      #list18_1 {
+        display: block;
+      }
+
+      #list18_1,
+      #list18_2 {
+        padding: 0;
+        list-style-type: none;
+      }
+
+      #input18_2,
+      #list18_2 {
+        display: block;
+      }
+
+      #list18_2,
+      #list20,
+      #list21,
+      #list22 {
+        padding: 0;
+        list-style-type: none;
+      }
+
+      #list20 span,
+      #list21 span,
+      #list22 span {
+        margin-right: 5px;
+      }
+
+      #list20 .remove20,
+      #list20 .mark20,
+      #list21 .remove20,
+      #list21 .mark20,
+      #list22 .remove20,
+      #list22 .mark20 {
+        color: blue;
+        cursor: pointer;
+      }
+
+      #list20 .remove20:hover,
+      #list20 .mark20:hover,
+      #list21 .remove20:hover,
+      #list21 .mark20:hover,
+      #list22 .remove20:hover,
+      #list22 .mark20:hover {
+        text-decoration: underline;
+      }
+
+      #list21 span,
+      #list22 span {
+        margin-right: 5px;
+      }
+
+      #list21 .done21,
+      #list22 .done21 {
+        text-decoration: line-through;
+      }
+
+      #parent24 {
+        margin: 0 auto;
+        width: 500px;
+      }
+
+      #form24 {
+        display: flex;
+        margin-bottom: 15px;
+      }
+
+      #form24 input {
+        padding: 8px;
+        width: 24%;
+        margin: 0 0.5% 10px 0.5%;
+      }
+
+      #table24 {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      #table24 td,
+      #table24 th {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid black;
+      }
+
+      #table24 td.remove24 {
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      #table24 td.remove24:hover {
+        text-decoration: none;
+      }
+
+      #result24 {
+        text-align: right;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Практика JavaScript <sup><span>(Макаров Т. С.)</span></sup></h1>
+    <div class="container">
+      <div class="task">
+        <h4 class="task__title">17 - Игра в города на JavaScript. Реализуйте игру в соответствии с описанным алгоритмом</h4>
+        <div class="task__decision">
+          <input id="input17" placeholder="Введите город" />
+          <div id="message17"></div>
+        </div>
+      </div>
+      
+      <div class="task">
+        <h4 class="task__title">18.1 - Чеклист на JavaScript. Допишите недостающую часть кода для решения описанной задачи</h4>
+        <div class="task__decision">
+          <input id="input18_1"/>
+          <ul id="list18_1"></ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">18.2 - Модифицируйте предыдущую задачу так, чтобы после нажатия клавиши
+        Enter происходила очистка текста инпута</h4>
+        <div class="task__decision">
+          <input id="input18_2" />
+          <ul id="list18_2"></ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">20 - Удаление дела в чеклисте на JavaScript. Допишите недостающую часть кода для решения описанной задачи</h4>
+        <div class="task__decision">
+          <input id="input20" />
+          <ul id="list20"></ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">21 - Завершение дела в чеклисте на JavaScript. Допишите недостающую часть кода для решения описанной задачи</h4>
+        <div class="task__decision">
+          <input id="input21" />
+          <ul id="list21"></ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">22 - Редактирование дела в чеклисте на JavaScript. Допишите недостающую часть кода для решения описанной задачи</h4>
+        <div class="task__decision">
+          <input id="input22" />
+          <ul id="list22"></ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">24 - Калькулятор продуктов на JavaScript. Скопируйте себе представленные мною заготовки кода. Реализуйте
+        описанную мною функцию createCell. Скопируйте мой код для добавления новой
+        покупки. Потестируйте добавление новой покупки в таблицу. Реализуйте
+        описанную мною функцию recountTotal. Напишите недостающий код для удаления
+        ряда таблицы. Добавьте вызов функции recountTotal в нужное место так,
+        чтобы удаление покупки обновляло общую сумму. Реализуйте описанное мною
+        редактирование ячеек. Допишите недостающую часть кода так, чтобы при
+        изменении ячейки с ценой или ячейки с количеством изменялась стоимость
+        покупки в колонке cost, а также выполнялся перерасчет общей суммы.</h4>
+        <div class="task__decision">
+          <div class="parent24">
+            <div id="form24">
+              <input id="name24" placeholder="название" />
+              <input id="price24" placeholder="цена" />
+              <input id="amount24" placeholder="количество" />
+              <input id="add24" type="button" value="добавить" />
+            </div>
+            <table id="table24">
+              <tr>
+                <th>название</th>
+                <th>цена</th>
+                <th>кол-во</th>
+                <th>сумма</th>
+                <th>удалить</th>
+              </tr>
+            </table>
+            <div id="result24">общий итог: <span id="total24">0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 17
+      let input17 = document.querySelector("#input17");
+      let message17 = document.querySelector("#message17");
+      let inputCities17 = [];
+      let currentPlayer17 = 1;
+      input17.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          let cityName17 = this.value;
+          if (cityName17.length === 0) {
+            message17.textContent = "Введите название города";
+            return;
+          }
+          let lastCity17 = inputCities17[inputCities17.length - 1];
+          if (
+            lastCity17 &&
+            cityName17.charAt(0).toUpperCase() !==
+              lastCity17.charAt(lastCity17.length - 1).toUpperCase()
+          ) {
+            message17.textContent =
+              "Название города должно начинаться на последнюю букву предыдущего города";
+            return;
+          }
+          if (inputCities17.includes(cityName17)) {
+            message17.textContent = "Этот город уже был использован";
+            return;
+          }
+          inputCities17.push(cityName17);
+          currentPlayer17 = currentPlayer17 === 1 ? 2 : 1;
+          message17.textContent = "Ходит игрок " + currentPlayer17;
+          this.value = "";
+        }
+      });
+
+      // 18_1
+      let input18_1 = document.querySelector("#input18_1");
+      let list18_1 = document.querySelector("#list18_1");
+      input18_1.addEventListener("keypress", function (event) {
+        if (event.key == "Enter") {
+          let li18_1 = document.createElement("li");
+          li18_1.textContent = input18_1.value;
+          list18_1.appendChild(li18_1);
+        }
+      });
+
+      // 18_2
+      let input18_2 = document.querySelector("#input18_2");
+      let list18_2 = document.querySelector("#list18_2");
+      input18_2.addEventListener("keypress", function (event) {
+        if (event.key == "Enter") {
+          let li18_2 = document.createElement("li");
+          li18_2.textContent = input18_2.value;
+          list18_2.appendChild(li18_2);
+          input18_2.value = "";
+        }
+      });
+
+      // 20
+      let input20 = document.querySelector("#input20");
+      let list20 = document.querySelector("#list20");
+      input20.addEventListener("keypress", function (event) {
+        if (event.key == "Enter") {
+          let li20 = document.createElement("li");
+          let task20 = document.createElement("span");
+          task20.classList.add("task20");
+          task20.textContent = this.value;
+          li20.appendChild(task20);
+          let remove20 = document.createElement("span");
+          remove20.classList.add("remove20");
+          remove20.textContent = "удалить";
+          remove20.addEventListener("click", function () {
+            li20.remove();
+          });
+          li20.appendChild(remove20);
+          let mark20 = document.createElement("span");
+          mark20.classList.add("mark20");
+          mark20.textContent = "сделано";
+          li20.appendChild(mark20);
+          list20.appendChild(li20);
+          this.value = "";
+        }
+      });
+
+      // 21
+      let input21 = document.querySelector("#input21");
+      let list21 = document.querySelector("#list21");
+      input21.addEventListener("keypress", function (event) {
+        if (event.key == "Enter") {
+          let li21 = document.createElement("li");
+          let task21 = document.createElement("span");
+          task21.classList.add("task20");
+          task21.textContent = this.value;
+          li21.appendChild(task21);
+          let remove21 = document.createElement("span");
+          remove21.classList.add("remove20");
+          remove21.textContent = "удалить";
+          remove21.addEventListener("click", function () {
+            li21.remove();
+          });
+          li21.appendChild(remove21);
+          let mark21 = document.createElement("span");
+          mark21.classList.add("mark20");
+          mark21.textContent = "сделано";
+          mark21.addEventListener("click", function () {
+            task21.classList.add("done21");
+          });
+          li21.appendChild(mark21);
+          list21.appendChild(li21);
+          this.value = "";
+        }
+      });
+
+      // 22
+      let input22 = document.querySelector("#input22");
+      let list22 = document.querySelector("#list22");
+      input22.addEventListener("keypress", function (event) {
+        if (event.key == "Enter") {
+          let li22 = document.createElement("li");
+          let task22 = document.createElement("span");
+          task22.classList.add("task20");
+          task22.textContent = this.value;
+          task22.addEventListener("dblclick", function () {
+            let editInput22 = document.createElement("input");
+            editInput22.type = "text";
+            editInput22.value = task22.textContent;
+            editInput22.classList.add("edit20");
+            task22.replaceWith(editInput22);
+            editInput22.addEventListener("keypress", function (e) {
+              if (e.key === "Enter") {
+                task22.textContent = editInput22.value;
+                if (task22.textContent === "") {
+                  task22.textContent = task22.textContent;
+                }
+                editInput22.replaceWith(task22);
+              }
+            });
+            editInput22.addEventListener("blur", function () {
+              task22.textContent = editInput22.value;
+              if (task22.textContent === "") {
+                task22.textContent = task22.textContent;
+              }
+              editInput22.replaceWith(task22);
+            });
+            editInput22.focus();
+          });
+          li22.appendChild(task22);
+          let remove22 = document.createElement("span");
+          remove22.classList.add("remove20");
+          remove22.textContent = "удалить";
+          remove22.addEventListener("click", function () {
+            li22.remove();
+          });
+          li22.appendChild(remove22);
+          let mark22 = document.createElement("span");
+          mark22.classList.add("mark20");
+          mark22.textContent = "сделано";
+          mark22.addEventListener("click", function () {
+            task22.classList.add("done21");
+          });
+          li22.appendChild(mark22);
+          list22.appendChild(li22);
+          this.value = "";
+        }
+      });
+
+      // 24
+      let name24 = document.querySelector("#name24");
+      let price24 = document.querySelector("#price24");
+      let amount24 = document.querySelector("#amount24");
+      let add24 = document.querySelector("#add24");
+      let table24 = document.querySelector("#table24");
+      let total24 = document.querySelector("#total24");
+      add24.addEventListener("click", function () {
+        let tr = document.createElement("tr");
+        allowEdit(tr.appendChild(createCell(name24.value, "name")));
+        allowEdit(tr.appendChild(createCell(price24.value, "price")));
+        allowEdit(tr.appendChild(createCell(amount24.value, "amount")));
+        let cost = price24.value * amount24.value;
+        tr.appendChild(createCell(cost, "cost"));
+        let removeCell = createCell("удалить", "remove");
+        removeCell.addEventListener("click", function () {
+          tr.remove();
+          recountTotal();
+        });
+        tr.appendChild(removeCell);
+        table24.appendChild(tr);
+        recountTotal();
+        name24.value = "";
+        price24.value = "";
+        amount24.value = "";
+      });
+      function createCell(value, name) {
+        let td = document.createElement("td");
+        td.textContent = value;
+        if (name === "remove") {
+          td.classList.add("remove24");
+        }
+        return td;
+      }
+      function allowEdit(td) {
+        td.addEventListener("dblclick", function () {
+          let originalText = td.textContent;
+          let input = document.createElement("input");
+          input.type = "text";
+          input.value = originalText;
+          td.textContent = "";
+          td.appendChild(input);
+          input.focus();
+          input.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+              td.textContent = input.value;
+              input.remove();
+              updateCostAndTotal(td);
+            }
+          });
+
+          input.addEventListener("blur", function () {
+            td.textContent = input.value;
+            input.remove();
+            updateCostAndTotal(td);
+          });
+        });
+      }
+      function updateCostAndTotal(td) {
+        let row = td.parentElement;
+        let price = parseFloat(row.children[1].textContent);
+        let amount = parseFloat(row.children[2].textContent);
+        let costCell = row.children[3];
+        costCell.textContent = (price * amount).toFixed(2);
+        recountTotal();
+      }
+      function recountTotal() {
+        let total = 0;
+        document.querySelectorAll("#table24 tr").forEach((row) => {
+          let cells = row.querySelectorAll("td");
+          if (cells.length === 5) {
+            total += parseFloat(cells[3].textContent);
+          }
+        });
+        total24.textContent = total.toFixed(2);
+      }
+    </script>
+  </body>
+</html>

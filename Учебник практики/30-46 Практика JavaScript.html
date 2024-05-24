@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Практика JavaScript</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body{
+        font-family: sans-serif;
+      }
+      p{
+        margin-bottom: 5px;
+      }
+      h4{
+        margin: 0;
+      }
+      .title{
+        text-align: center;
+      }
+      .title span{
+        font-size: 24px;
+        color: #ccc;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1220px;
+        padding: 0 10px;
+        margin: 0 auto;
+        gap: 40px;
+      }
+      .task {
+        border-bottom: 2px solid #000;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+      }
+      .task:last-child{
+        border: none;
+      }
+      .task__title {
+        margin-bottom: 10px;
+      }
+      .right {
+        border: 1px solid green;
+      }
+
+      .wrong {
+        border: 1px solid red;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #slider40 img.active40 {
+        opacity: 1;
+      }
+
+      #field46 td {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Практика JavaScript <sup><span>(Макаров Т. С.)</span></sup></h1>
+    <div class="container">
+      <div class="task">
+        <h4 class="task__title">30_1 - Тест с вопросами и ответами в HTML коде на JavaScript. Сделайте так, чтобы ввод ответа в инпут завершался нажатием клавиши
+        Enter. Пусть в этом случае инпут сразу проверяет ответ на правильность.</h4>
+        <div class="task__decision">
+          <div id="test30_1">
+            <div>
+              <p>вопрос 1?</p>
+              <input data-right="ответ 1" />
+            </div>
+            <div>
+              <p>вопрос 2?</p>
+              <input data-right="ответ 2" />
+            </div>
+            <div>
+              <p>вопрос 3?</p>
+              <input data-right="ответ 3" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">30_2 - Модифицируйте ваш код так, чтобы проверка ответов выполнялась по
+        нажатию на кнопку.</h4>
+        <div class="task__decision">
+          <div id="test30_2">
+            <div>
+              <p>вопрос 1?</p>
+              <input data-right="ответ 1" />
+            </div>
+            <div>
+              <p>вопрос 2?</p>
+              <input data-right="ответ 2" />
+            </div>
+            <div>
+              <p>вопрос 3?</p>
+              <input data-right="ответ 3" />
+            </div>
+          </div>
+          <button id="checkButton30_2">Проверить ответы</button>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">31 - Тест с ответами в массиве на JavaScript. Сделайте так, чтобы по нажатию на кнопку выполнилась проверка
+        правильности ответов.</h4>
+        <div class="task__decision">
+          <div id="test31">
+            <div>
+              <p>вопрос 1?</p>
+              <input />
+            </div>
+            <div>
+              <p>вопрос 2?</p>
+              <input />
+            </div>
+            <div>
+              <p>вопрос 3?</p>
+              <input />
+            </div>
+            <button id="checkButton31">проверить ответы</button>
+          </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">32 - Тест с вопросами и ответами в массиве на JavaScript. Реализуйте поставленную задачу</h4>
+        <div class="task__decision">
+          <div id="test32"></div>
+          <button id="checkButton32">проверить ответы</button>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">33_1 - Тест с вопросами и ответами в объекте на JavaScript. Пусть вопросы и ответы хранятся в таком объекте. Решите задачу
+        создания теста для такого варианта хранения данных.</h4>
+        <div class="task__decision">
+          <div id="test33_1"></div>
+          <button id="checkButton33_1">проверить ответы</button>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">33_2 - Пусть вопросы и ответы хранятся в таком объекте. Решите задачу
+        создания теста для такого варианта хранения данных.</h4>
+        <div class="task__decision">
+          <div id="test33_2"></div>
+          <button id="checkButton33_2">проверить ответы</button>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">34_1 - Тест с вариантами ответов в HTML коде на JavaScript. Сделайте так, чтобы при выборе одного из ответов вопроса этот ответ
+        сразу проверялся на правильность.</h4>
+        <div class="task__decision">
+          <div id="test34_1">
+            <div>
+              <p>вопрос 1?</p>
+              <label>
+                <input type="radio" name="1" data-right34_1 class="input34_1" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="1" class="input34_1" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="1" class="input34_1" />
+                вариант 3
+              </label>
+            </div>
+            <div>
+              <p>вопрос 2?</p>
+              <label>
+                <input type="radio" name="2" class="input34_1" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="2" data-right34_1 class="input34_1" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="2" class="input34_1" />
+                вариант 3
+              </label>
+            </div>
+            <div>
+              <p>вопрос 3?</p>
+              <label>
+                <input type="radio" name="3" class="input34_1" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="3" class="input34_1" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="3" data-right34_1 class="input34_1" />
+                вариант 3
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="task">
+        <h4 class="task__title">34_2 - Модифицируйте ваш код так, чтобы проверка ответов выполнялась по
+        нажатию на кнопку.</h4>
+        <div class="task__decision">
+          <div id="test34_2">
+            <div>
+              <p>вопрос 1?</p>
+              <label>
+                <input type="radio" name="1" data-right34_2 class="input34_2" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="1" class="input34_2" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="1" class="input34_2" />
+                вариант 3
+              </label>
+            </div>
+            <div>
+              <p>вопрос 2?</p>
+              <label>
+                <input type="radio" name="2" class="input34_2" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="2" data-right34_2 class="input34_2" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="2" class="input34_2" />
+                вариант 3
+              </label>
+            </div>
+            <div>
+              <p>вопрос 3?</p>
+              <label>
+                <input type="radio" name="3" class="input34_2" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="3" class="input34_2" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="3" data-right34_2 class="input34_2" />
+                вариант 3
+              </label>
+            </div>
+          </div>
+          <button id="checkButton34_2">проверить ответы</button>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">35 - Тест с вариантами ответов в массиве на JavaScript. Модифицируйте код предыдущего урока с учетом описанного.</h4>
+        <div class="task__decision">
+          <div id="test35">
+            <div>
+              <p>вопрос 1?</p>
+              <label>
+                <input type="radio" name="1" data-right35 class="input35" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="1" class="input35" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="1" class="input35" />
+                вариант 3
+              </label>
+            </div>
+            <div>
+              <p>вопрос 2?</p>
+              <label>
+                <input type="radio" name="2" class="input35" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="2" data-right35 class="input35" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="2" class="input35" />
+                вариант 3
+              </label>
+            </div>
+            <div>
+              <p>вопрос 3?</p>
+              <label>
+                <input type="radio" name="3" class="input35" />
+                вариант 1
+              </label>
+              <label>
+                <input type="radio" name="3" class="input35" />
+                вариант 2
+              </label>
+              <label>
+                <input type="radio" name="3" data-right35 class="input35" />
+                вариант 3
+              </label>
+            </div>
+          </div>
+          <button id="checkButton35">проверить ответы</button>
+        </div>
+      </div>
+      
+      <div class="task">
+        <h4 class="task__title">36 - Тест с вопросами и вариантами ответов в объекте на JavaScript. Реализуйте поставленную задачу.</h4>
+        <div class="task__decision">
+          <div id="test36"></div>
+          <button id="checkButton36">проверить ответы</button>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">37 - Слайдер текста на JavaScript. Реализуйте описанный слайдер.</h4>
+        <div class="task__decision">
+          <div id="slider37"></div>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">38_1 - Слайдер текста со стрелками на JavaScript. Реализуйте описанный слайдер. Сделайте так, чтобы тексты ходили по
+        кругу.</h4>
+        <div class="task__decision">
+          <a href="#" id="left38_1">←</a>
+          <a href="#" id="right38_1">→</a>
+          <div id="slider38_1"></div>
+        </div>
+      </div>
+      
+      <div class="task">
+        <h4 class="task__title">38_2 - Модифицируйте предыдущую задачу так, чтобы тексты не ходили по
+        кругу, а просто не прокручивались дальше по достижению крайнего правого
+        или левого положения.</h4>
+        <div class="task__decision">
+          <a href="#" id="left38_2">←</a>
+          <a href="#" id="right38_2">→</a>
+          <div id="slider38_2"></div>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">39_1 - Слайдер картинок через массив на JavaScript. Реализуйте описанный слайдер. Сделайте так, чтобы картинки ходили
+        по кругу.</h4>
+        <div class="task__decision">
+          <img id="slider39_1" src="" />
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">39_2 - Модифицируйте предыдущую задачу так, чтобы над картинкой также
+        появились стрелки вперед и назад. То есть слайдер будет сам проматываться
+        таймером, но при желании юзер также сможет промотать его ссылками</h4>
+        <div class="task__decision">
+          <img id="slider39_2" src="" />
+          <a href="#" id="left39_2">&lt;</a>
+          <a href="#" id="right39_2">&gt;</a>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">40 - Слайдер картинок через HTML на JavaScript. Реализуйте описанный слайдер.</h4>
+        <div class="task__decision">
+          <div id="slider40">
+            <img src="1.png" />
+            <img src="2.png" />
+            <img src="3.png" />
+          </div>
+        </div>
+      </div>
+
+      <div class="task">
+        <h4 class="task__title">46 - Игра крестики-нолики на JavaScript. Реализуйте описанное чередование крестика и нолика. Сейчас на любую
+        ячейку можно делать неограниченное количество кликов, меняя, например,
+        крестик на нолик. Исправьте это. Попробуйте реализовать проверку ничьей. В
+        следующем уроке будет разбор этого места.</h4>
+        <div class="task__decision">
+          <table id="field46">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  <script>
+      // 30_1
+      let test30_1 = document.getElementById("test30_1");
+      let inputs30_1 = test30_1.querySelectorAll("input");
+      inputs30_1.forEach((input) => {
+        input.addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            checkAnswer30_1(this);
+          }
+        });
+      });
+      function checkAnswer30_1(input) {
+        let correctAnswer30_1 = input.dataset.right;
+        let userAnswer30_1 = input.value;
+        if (userAnswer30_1 === correctAnswer30_1) {
+          input.classList.remove("wrong");
+          input.classList.add("right");
+        } else {
+          input.classList.remove("right");
+          input.classList.add("wrong");
+        }
+      }
+
+      // 30_2
+      let inputs30_2 = document.querySelectorAll("#test30_2 input");
+      let checkButton30_2 = document.getElementById("checkButton30_2");
+      checkButton30_2.addEventListener("click", function () {
+        inputs30_2.forEach((input) => {
+          checkAnswer30_2(input);
+        });
+      });
+      function checkAnswer30_2(input) {
+        let correctAnswer30_2 = input.dataset.right;
+        let userAnswer30_2 = input.value;
+        if (userAnswer30_2 === correctAnswer30_2) {
+          input.classList.remove("wrong");
+          input.classList.add("right");
+        } else {
+          input.classList.remove("right");
+          input.classList.add("wrong");
+        }
+      }
+
+      // 31
+      let answers31 = ["ответ 1", "ответ 2", "ответ 3"];
+      let inputs31 = document.querySelectorAll("#test31 input");
+      let checkButton31 = document.getElementById("checkButton31");
+      checkButton31.addEventListener("click", function () {
+        inputs31.forEach((input, index) => {
+          let userAnswer31 = input.value;
+          let correctAnswer31 = answers31[index];
+          if (userAnswer31 === correctAnswer31) {
+            input.classList.remove("wrong");
+            input.classList.add("right");
+          } else {
+            input.classList.remove("right");
+            input.classList.add("wrong");
+          }
+        });
+      });
+
+      // 32
+      let questions32 = ["вопрос 1?", "вопрос 2?", "вопрос 3?"];
+      let answers32 = ["ответ 1", "ответ 2", "ответ 3"];
+      let test32 = document.getElementById("test32");
+      let checkButton32 = document.getElementById("checkButton32");
+      questions32.forEach((question, index) => {
+        let div32 = document.createElement("div");
+        let p32 = document.createElement("p");
+        let input32 = document.createElement("input");
+        input32.setAttribute("type", "text");
+        p32.textContent = question;
+        div32.appendChild(p32);
+        div32.appendChild(input32);
+        test32.appendChild(div32);
+      });
+      checkButton32.addEventListener("click", function () {
+        let inputs32 = test32.querySelectorAll("input");
+        inputs32.forEach((input, index) => {
+          let userAnswer32 = input.value;
+          let correctAnswer32 = answers32[index];
+          if (userAnswer32 === correctAnswer32) {
+            input.classList.remove("wrong");
+            input.classList.add("right");
+          } else {
+            input.classList.remove("right");
+            input.classList.add("wrong");
+          }
+        });
+      });
+
+      // 33_1
+      let questions33_1 = {
+        "Вопрос 1?": "ответ 1",
+        "Вопрос 2?": "ответ 2",
+        "Вопрос 3?": "ответ 3",
+      };
+      let test33_1 = document.getElementById("test33_1");
+      let checkButton33_1 = document.getElementById("checkButton33_1");
+      for (let question33_1 in questions33_1) {
+        let div33_1 = document.createElement("div");
+        let p33_1 = document.createElement("p");
+        let input33_1 = document.createElement("input");
+        input33_1.setAttribute("type", "text");
+        p33_1.textContent = question33_1;
+        div33_1.appendChild(p33_1);
+        div33_1.appendChild(input33_1);
+        test33_1.appendChild(div33_1);
+      }
+      checkButton33_1.addEventListener("click", function () {
+        let inputs33_1 = test33_1.querySelectorAll("input");
+        inputs33_1.forEach((input) => {
+          let userAnswer33_1 = input.value;
+          let question = input.previousElementSibling.textContent;
+          let correctAnswer33_1 = questions33_1[question];
+          if (userAnswer33_1 === correctAnswer33_1) {
+            input.classList.remove("wrong");
+            input.classList.add("right");
+          } else {
+            input.classList.remove("right");
+            input.classList.add("wrong");
+          }
+        });
+      });
+
+      // 33_2
+      let questions33_2 = [
+        {
+          text: "вопрос 1?",
+          right: "ответ 1",
+        },
+        {
+          text: "вопрос 2?",
+          right: "ответ 2",
+        },
+        {
+          text: "вопрос 3?",
+          right: "ответ 3",
+        },
+      ];
+      let test33_2 = document.getElementById("test33_2");
+      let checkButton33_2 = document.getElementById("checkButton33_2");
+      questions33_2.forEach((questionObj) => {
+        let div33_2 = document.createElement("div");
+        let p33_2 = document.createElement("p");
+        let input33_2 = document.createElement("input");
+        input33_2.setAttribute("type", "text");
+        p33_2.textContent = questionObj.text;
+        div33_2.appendChild(p33_2);
+        div33_2.appendChild(input33_2);
+        test33_2.appendChild(div33_2);
+      });
+      checkButton33_2.addEventListener("click", function () {
+        let inputs33_2 = test33_2.querySelectorAll("input");
+        inputs33_2.forEach((input, index) => {
+          let userAnswer33_2 = input.value;
+          let correctAnswer33_2 = questions33_2[index].right;
+          if (userAnswer33_2 === correctAnswer33_2) {
+            input.classList.remove("wrong");
+            input.classList.add("right");
+          } else {
+            input.classList.remove("right");
+            input.classList.add("wrong");
+          }
+        });
+      });
+
+      // 34_1
+      let radioButtons34_1 = document.querySelectorAll(
+        '.input34_1[type="radio"]'
+      );
+      radioButtons34_1.forEach((radioButton34_1) => {
+        radioButton34_1.addEventListener("change", function () {
+          let parentDiv34_1 = this.closest("div");
+          let rightAnswer34_1 = parentDiv34_1.querySelector("[data-right34_1]");
+          if (this === rightAnswer34_1) {
+            this.parentElement.classList.add("right");
+            this.parentElement.classList.remove("wrong");
+          } else {
+            this.parentElement.classList.add("wrong");
+            this.parentElement.classList.remove("right");
+          }
+        });
+      });
+
+      // 34_2
+      let checkButton34_2 = document.getElementById("checkButton34_2");
+      checkButton34_2.addEventListener("click", function () {
+        let questions34_2 = document.querySelectorAll("#test34_2 div");
+        questions34_2.forEach((question34_2) => {
+          let inputs34_2 = question34_2.querySelectorAll(
+            '.input34_2[type="radio"]'
+          );
+          let rightAnswer34_2 = question34_2.querySelector(
+            "[data-right34_2]:checked"
+          );
+          inputs34_2.forEach((input) => {
+            let isRight = input.checked && input === rightAnswer34_2;
+            let label = input.parentElement;
+            if (isRight) {
+              label.classList.add("right");
+              label.classList.remove("wrong");
+            } else {
+              label.classList.add("wrong");
+              label.classList.remove("right");
+            }
+          });
+        });
+      });
+
+      // 35
+      let answers35 = [0, 1, 2];
+      let checkButton35 = document.getElementById("checkButton35");
+      checkButton35.addEventListener("click", function () {
+        let questions35 = document.querySelectorAll("#test35 div");
+        questions35.forEach((question, index) => {
+          let inputs35 = question.querySelectorAll('.input35[type="radio"]');
+          let rightIndex = answers35[index];
+          inputs35.forEach((input, inputIndex) => {
+            let isRight = inputIndex === rightIndex;
+            let label = input.parentElement;
+            if (isRight) {
+              label.classList.add("right");
+              label.classList.remove("wrong");
+            } else {
+              label.classList.add("wrong");
+              label.classList.remove("right");
+            }
+          });
+        });
+      });
+
+      // 36
+      let questions36 = [
+        {
+          text: "вопрос 1?",
+          right: 0,
+          variants: ["вариант 1", "вариант 2", "вариант 3"],
+        },
+        {
+          text: "вопрос 2?",
+          right: 1,
+          variants: ["вариант 1", "вариант 2", "вариант 3"],
+        },
+        {
+          text: "вопрос 3?",
+          right: 2,
+          variants: ["вариант 1", "вариант 2", "вариант 3"],
+        },
+      ];
+      let test36 = document.getElementById("test36");
+      let checkButton36 = document.getElementById("checkButton36");
+      function renderQuestions() {
+        questions36.forEach((question, index) => {
+          let questionDiv36 = document.createElement("div");
+          let questionText36 = document.createElement("p");
+          questionText36.textContent = question.text;
+          questionDiv36.appendChild(questionText36);
+          question.variants.forEach((variant, variantIndex) => {
+            let label = document.createElement("label");
+            let input = document.createElement("input");
+            input.type = "radio";
+            input.name = `question${index}`;
+            input.dataset.index = variantIndex;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(variant));
+            questionDiv36.appendChild(label);
+          });
+          test36.appendChild(questionDiv36);
+        });
+      }
+      function checkAnswers() {
+        questions36.forEach((question, index) => {
+          let inputs36 = document.querySelectorAll(
+            `input[name="question${index}"]:checked`
+          );
+          let isCorrect =
+            inputs36.length === 1 &&
+            parseInt(inputs36[0].dataset.index) === question.right;
+          inputs36.forEach((input) => {
+            let label = input.parentElement;
+            if (isCorrect) {
+              label.classList.add("right");
+              label.classList.remove("wrong");
+            } else {
+              label.classList.add("wrong");
+              label.classList.remove("right");
+            }
+          });
+        });
+      }
+      renderQuestions();
+      checkButton36.addEventListener("click", checkAnswers);
+
+      // 37
+      let texts37 = ["text1", "text2", "text3"];
+      let slider37 = document.getElementById("slider37");
+      let currentIndex37 = 0;
+      function updateSlider() {
+        slider37.textContent = texts37[currentIndex37];
+        currentIndex37 = (currentIndex37 + 1) % texts37.length;
+      }
+      setInterval(updateSlider, 1000);
+      updateSlider();
+
+      // 38_1
+      let texts38_1 = ["text1", "text2", "text3"];
+      let i38_1 = 0;
+      let slider38_1 = document.getElementById("slider38_1");
+      let left38_1 = document.getElementById("left38_1");
+      let right38_1 = document.getElementById("right38_1");
+      function updateText38_1() {
+        slider38_1.textContent = texts38_1[i38_1];
+      }
+      left38_1.addEventListener("click", function (event) {
+        event.preventDefault();
+        i38_1 = (i38_1 - 1 + texts38_1.length) % texts38_1.length;
+        updateText38_1();
+      });
+      right38_1.addEventListener("click", function (event) {
+        event.preventDefault();
+        i38_1 = (i38_1 + 1) % texts38_1.length;
+        updateText38_1();
+      });
+      updateText38_1();
+
+      // 38_2
+      let texts38_2 = ["text1", "text2", "text3"];
+      let i38_2 = 0;
+      let slider38_2 = document.getElementById("slider38_2");
+      let left38_2 = document.getElementById("left38_2");
+      let right38_2 = document.getElementById("right38_2");
+      function updateText38_2() {
+        slider38_2.textContent = texts38_2[i38_2];
+        if (i38_2 === 0) {
+          left38_2.classList.add("hidden");
+        } else {
+          left38_2.classList.remove("hidden");
+        }
+        if (i38_2 === texts38_2.length - 1) {
+          right38_2.classList.add("hidden");
+        } else {
+          right38_2.classList.remove("hidden");
+        }
+      }
+      left38_2.addEventListener("click", function (event) {
+        event.preventDefault();
+        i38_2 = Math.max(i38_2 - 1, 0);
+        updateText38_2();
+      });
+      right38_2.addEventListener("click", function (event) {
+        event.preventDefault();
+        i38_2 = Math.min(i38_2 + 1, texts38_2.length - 1);
+        updateText38_2();
+      });
+      updateText38_2();
+
+      // 39_1
+      let texts39_1 = ["1.png", "2.png", "3.png"];
+      let i39_1 = 0;
+      let slider39_1 = document.getElementById("slider39_1");
+      function updateImage39_1() {
+        slider39_1.src = texts39_1[i39_1];
+        i39_1 = (i39_1 + 1) % texts39_1.length;
+      }
+      updateImage39_1();
+      setInterval(updateImage39_1, 1000);
+
+      // 39_2
+      let texts39_2 = ["1.png", "2.png", "3.png"];
+      let i39_2 = 0;
+      let slider39_2 = document.getElementById("slider39_2");
+      let left39_2 = document.getElementById("left39_2");
+      let right39_2 = document.getElementById("right39_2");
+      function updateImage39_2() {
+        slider39_2.src = texts39_2[i39_2];
+        i39_2 = (i39_2 + 1) % texts39_2.length;
+      }
+      left39_2.addEventListener("click", function (event) {
+        event.preventDefault();
+        i39_2 = (i39_2 - 1 + texts39_2.length) % texts39_2.length;
+        updateImage39_2();
+      });
+      right39_2.addEventListener("click", function (event) {
+        event.preventDefault();
+        i39_2 = (i39_2 + 1) % texts39_2.length;
+        updateImage39_2();
+      });
+      updateImage39_2();
+      setInterval(updateImage39_2, 1000);
+
+      // 40
+      let texts40 = document.querySelectorAll("#slider40 img");
+      let i40 = 0;
+      function updateImage40() {
+        texts40.forEach((img, index) => {
+          img.classList.remove("active40");
+          if (index === i40) {
+            img.classList.add("active40");
+          }
+        });
+        i40 = (i40 + 1) % texts40.length;
+      }
+      updateImage40();
+      setInterval(updateImage40, 1000);
+
+      // 46
+      let cells = document.querySelectorAll("#field46 td");
+      function start(cells) {
+        let i46 = 0;
+        for (let cell of cells) {
+          cell.addEventListener("click", function step() {
+            this.textContent = ["X", "O"][i46 % 2];
+            this.removeEventListener("click", step);
+            if (isVictory(cells)) {
+              alert(this.textContent + " победил!");
+            } else if (i46 == 8) {
+              alert("ничья");
+            }
+            i46++;
+          });
+        }
+      }
+      function isVictory(cells) {
+        let combs = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6],
+        ];
+        for (let comb of combs) {
+          if (
+            cells[comb[0]].textContent == cells[comb[1]].textContent &&
+            cells[comb[1]].textContent == cells[comb[2]].textContent &&
+            cells[comb[0]].textContent != ""
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+      start(cells);
+    </script>
+  </body>
+</html>
