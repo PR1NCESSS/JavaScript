@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Практикум DOM</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body{
+        font-family: sans-serif;
+      }
+      p{
+        margin-bottom: 5px;
+      }
+      h4{
+        margin: 0;
+      }
+      .title{
+        text-align: center;
+      }
+      .title span{
+        font-size: 24px;
+        color: #ccc;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1220px;
+        padding: 0 10px;
+        margin: 0 auto;
+        gap: 40px;
+      }
+      .task {
+        border-bottom: 2px solid #000;
+        padding-bottom: 15px;
+      }
+      .task:last-child{
+        border: none;
+      }
+      .task__title {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Практикум DOM <sup><span>(Макаров Т. С.)</span></sup></h1>
+    <div class="container">
+      <div class="task">
+        <h4 class="task__title">
+          #1 Дан инпут и абзац. По потери фокуса в инпуте запишите значение
+          инпута в конец текста абзаца.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="myInput" />
+          <p id="myParagraph">Некоторый текст абзаца...</p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #2 Дано несколько инпутов, абзац и кнопка. По нажатию на кнопку
+          получите числа, стоящие в этих инпутах и запишите их сумму в абзац.
+        </h4>
+        <div class="task__decision">
+          <input type="number" class="number-input" />
+          <input type="number" class="number-input" />
+          <input type="number" class="number-input" />
+          <p id="sumParagraph">Сумма: 0</p>
+          <button id="sumButton">Посчитать сумму</button>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #3 Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого числа.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="numberInput" placeholder="Введите число">
+          <p id="sumResult">Сумма цифр: 0</p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #4 Дан инпут. В него вводятся числа через запятую. По потери фокуса найдите среднее арифметическое этих чисел (сумма делить на количество).
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="numbersInput" placeholder="Введите числа через запятую">
+          <p id="averageResult">Среднее арифметическое: 0</p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #5 Даны 4 инпута. В первый инпут вводится ФИО через пробел. По потери фокуса запишите фамилию, имя и отчество в остальные 3 инпута.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="fullNameInput" placeholder="Введите ФИО">
+          <input type="text" id="firstNameInput" placeholder="Имя">
+          <input type="text" id="lastNameInput" placeholder="Фамилия">
+          <input type="text" id="patronymicInput" placeholder="Отчество">
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #6 Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы. Сделайте так, чтобы по потери фокуса
+          инпутом, введенные фамилия, имя и отчество автоматически стали записанными с большой буквы (в этом же инпуте).
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="fullNameInput2" placeholder="Введите ФИО с маленькой буквы">
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #7 Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="textInput" placeholder="Введите текст">
+          <p id="wordCount">Количество слов: 0</p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #8 Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом же инпуте поставьте эту дату в формате
+          2016-12-31.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="dateInput" placeholder="Введите дату в формате 31.12.2016">
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #9 Дан инпут. В него вводится слово. По нажатию на кнопку проверьте то, что это слово читается с начала и с конца одинаково (например, мадам).
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="wordInput" placeholder="Введите слово">
+          <button id="checkButton">Проверить</button>
+          <p id="result">Результат: </p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #10 Дан инпут. В него вводится число. Проверьте по потери фокуса, что это число содержит внутри себя цифру 3.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="numberInput2" placeholder="Введите число">
+          <p id="result2">Результат: </p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #11 Даны несколько абзацев и кнопка. По нажатию на кнопку запишите в конец каждого абзаца его порядковый номер.
+        </h4>
+        <div class="task__decision">
+          <p class="p11">Абзац</p>
+          <p class="p11">Абзац</p>
+          <p class="p11">Абзац</p>
+          <p class="p11">Абзац</p>
+          <p class="p11">Абзац</p>
+          <button id="addIndexButton">Добавить порядковые номера</button>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #12 Даны ссылки. Добавьте в конец каждой ссылки ее href в круглых скобках.
+        </h4>
+        <div class="task__decision">
+          <a href="https://example.com">Пример 1</a><br>
+          <a href="https://example.org">Пример 2</a><br>
+          <a href="https://example.net">Пример 3</a><br>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #13 Даны ссылки. Если ссылка начинается с http://, то добавьте ей в конец стрелку → (делается так: &rarr;).
+        </h4>
+        <div class="task__decision">
+          <a class="a13" href="http://example.com">Пример 1</a><br>
+          <a class="a13" href="https://example.org">Пример 2</a><br>
+          <a class="a13" href="https://example.net">Пример 3</a><br>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #14 Даны несколько абзацев с числами. По нажатию на любой абзац запишите в него квадрат числа, которое в нем находится.
+        </h4>
+        <div class="task__decision">
+          <p class="number">1</p>
+          <p class="number">2</p>
+          <p class="number">3</p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #15 Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте день недели (словом), который приходится на эту дату.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="dateInput2" placeholder="Введите дату в формате 31.12.2016">
+          <p id="dayOfWeek">День недели: </p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #16 Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать на 1 значение инпута. Сделайте так, чтобы это значение не могло стать меньше нуля.
+        </h4>
+        <div class="task__decision">
+          <input type="number" id="numberInput3" value="0" min="0">
+          <button id="incrementButton">+1</button>
+          <button id="decrementButton">-1</button>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #17 Дан инпут. Даны абзацы. Пусть в этот инпут записывается суммарное количество нажатий по этим абзацам.
+        </h4>
+        <div class="task__decision">
+          <p class="p17">Первый абзац</p>
+          <p class="p17">Второй абзац</p>
+          <p class="p17">Третий абзац</p>
+          <input type="text" id="totalClicks" value="0" readonly>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #18 На странице есть дивы. В них есть текст. Обойдите все дивы и обрежьте тот текст, который в них стоит так, чтобы он стал длиной 10 символов. И добавьте троеточие в конец обрезанного текста
+        </h4>
+        <div class="task__decision">
+          <div class="div18">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente libero dolores aperiam quisquam, optio excepturi soluta molestiae nam in minima mollitia nesciunt enim culpa commodi magnam. Dignissimos odio omnis voluptatibus!</div>
+          <div class="div18">Eaque amet sint cumque, aliquam magnam quos sed labore, fugiat neque vitae voluptatibus esse sapiente. Sunt suscipit minus, cum ipsum beatae voluptatum eveniet. Reiciendis magni amet expedita natus, odio vero?</div>
+          <div class="div18">Aperiam voluptatem distinctio et modi itaque provident deserunt dolorem velit, illo sint voluptates blanditiis nulla voluptatibus voluptate consequuntur. Itaque explicabo iusto dolorem incidunt quis necessitatibus sit numquam dolorum hic totam.</div>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #19 Дан инпут и кнопка. По нажатию на кнопку сгенерируйте случайную строку из 8-ми символов и запишите в инпут.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="randomStringInput">
+          <button onclick="generateRandomString()">Сгенерировать случайную строку</button>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #20 Дан инпут и кнопка. Пользователь вводит в инпут какую-то строку. По нажатию на кнопку перемешайте введенные символы
+          случайным образом и запишите ее обратно в инпут.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="inputString">
+          <button onclick="shuffleString()">Перемешать строку</button>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #21 Дан инпут, кнопка и абзац. В инпут вводится температура в градусах Фаренгейта. По клику на кнопку выведите в абзац
+          температуру в градусах Цельсия.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="fahrenheitInput">
+          <button onclick="convertTemperature()">Конвертировать</button>
+          <p id="resultParagraph"></p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #22 Дан инпут, кнопка и абзац. В инпут вводится число. По нажатию на кнопку выведите в абзац факториал этого числа.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="numberInput4">
+          <button onclick="calculateFactorial()">Вычислить факториал</button>
+          <p id="resultParagraph2"></p>
+        </div>
+      </div>
+      <div class="task">
+        <h4 class="task__title">
+          #23 Даны 3 инпута, кнопка и абзац. В инпуты вводятся коэффициенты квадратного уравнения. По нажатию на кнопку найдите корни этого уравнения и выведите их в абзац.
+        </h4>
+        <div class="task__decision">
+          <input type="text" id="a" placeholder="Коэффициент a">
+          <input type="text" id="b" placeholder="Коэффициент b">
+          <input type="text" id="c" placeholder="Коэффициент c">
+          <button onclick="solveQuadraticEquation()">Решить</button>
+          <p id="result3"></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 1
+      const input = document.querySelector("#myInput");
+      const paragraph = document.querySelector("#myParagraph");
+      input.addEventListener("blur", function () {
+        paragraph.textContent += this.value;
+        this.value = "";
+      });
+
+      // 2
+      document.querySelector("#sumButton").addEventListener("click", function () {
+          const inputs = document.querySelectorAll(".number-input");
+          let sum = 0;
+          inputs.forEach(function (input) {
+            sum += parseFloat(input.value);
+          });
+          document.querySelector("#sumParagraph").textContent = "Сумма: " + sum;
+        });
+
+      // 3
+      document.querySelector('#numberInput').addEventListener('blur', function () {
+          let number = this.value;
+          let sum = 0;
+          for (let i = 0; i < number.length; i++) {
+              sum += parseInt(number[i], 10);
+          }
+          document.querySelector('#sumResult').textContent = 'Сумма цифр: ' + sum;
+        });
+        
+      // 4
+      document.querySelector('#numbersInput').addEventListener('blur', function () {
+          let numbersString = this.value;
+          let numbersArray = numbersString.split(',').map(function (item) {
+            return parseFloat(item);
+          });
+          let sum = 0;
+          let count = 0;
+          for (let i = 0; i < numbersArray.length; i++) {
+              sum += numbersArray[i];
+              count++;
+          }
+          let average = sum / count;
+          document.querySelector('#averageResult').textContent = 'Среднее арифметическое: ' + average;
+        });
+      
+      // 5 
+      document.querySelector('#fullNameInput').addEventListener('blur', function () {
+          let fullName = this.value;
+          let parts = fullName.split(' ');
+          let lastName = parts[0] || '';
+          let firstName = parts[1] || '';
+          let patronymic = parts[2] || '';
+          document.querySelector('#lastNameInput').value = lastName;
+          document.querySelector('#firstNameInput').value = firstName;
+          document.querySelector('#patronymicInput').value = patronymic;
+        });
+
+      // 6
+      function capitalizeWord(word) {
+          return word[0].toUpperCase() + word.slice(1).toLowerCase();
+        }
+      function capitalizeFullName(fullName) {
+          return fullName.split(' ').map(capitalizeWord).join(' ');
+      }
+      document.querySelector('#fullNameInput2').addEventListener('blur', function () {
+          this.value = capitalizeFullName(this.value);
+      });
+
+      // 7 
+      document.querySelector('#textInput').addEventListener('blur', function () {
+          let text = this.value.trim();
+          let wordCount = 0;
+          if (text) {
+            let words = text.split(/\s+/);
+            wordCount = words.length;
+          }
+          document.querySelector('#wordCount').textContent = 'Количество слов: ' + wordCount;
+        });
+
+      // 8
+      document.querySelector('#dateInput').addEventListener('blur', function () {
+          let dateValue = this.value;
+          let parts = dateValue.split('.');
+          if (parts.length === 3) {
+            let day = parts[0];
+            let month = parts[1];
+            let year = parts[2];
+            this.value = year + '-' + month + '-' + day;
+          }
+        });
+
+      // 9
+      document.querySelector('#checkButton').addEventListener('click', function () {
+          let word = document.querySelector('#wordInput').value;
+          let normalizedWord = word.toLowerCase();
+          let reversedWord = normalizedWord.split('').reverse().join('');
+          let isPalindrome = normalizedWord === reversedWord;
+          document.querySelector('#result').textContent = 'Результат: ' + (isPalindrome ? 'да' : 'нет');
+        });
+
+      // 10
+      document.querySelector('#numberInput2').addEventListener('blur', function () {
+          let number = this.value;
+          let containsThree = number.includes('3');
+          let resultText = containsThree ? 'Число содержит цифру 3.' : 'Число не содержит цифру 3.';
+          document.querySelector('#result2').textContent = 'Результат: ' + resultText;
+        });
+
+      // 11
+      document.querySelector('addIndexButton').addEventListener('click', function () {
+          let paragraphs = document.querySelectorAll('p.p11');
+          paragraphs.forEach(function (paragraph, index) {
+            paragraph.textContent += ` (${index+1})`;
+          });
+        });
+
+      // 12
+      let links = document.querySelectorAll('a');
+      links.forEach(function (link) {
+          let href = link.getAttribute('href');
+          link.textContent += ' (' + href + ')';
+      });
+
+      // 13
+      let links2 = document.querySelectorAll('a.a13');
+        links2.forEach(function (link) {
+          if (link.getAttribute('href').startsWith('http://')) {
+            link.innerHTML += ' &rarr;';
+          }
+        });
+      
+      // 14
+      let paragraphs = document.querySelectorAll('#number');
+        paragraphs.forEach(function (paragraph) {
+          paragraph.addEventListener('click', function () {
+            let number = parseInt(this.textContent);
+            this.textContent = number * number;
+          });
+        });
+
+      // 15
+      document.querySelector('#dateInput2').addEventListener('blur', function () {
+          let inputValue = this.value;
+          let dateParts = inputValue.split('.');
+          if (dateParts.length === 3) {
+            let day = parseInt(dateParts[0]);
+            let month = parseInt(dateParts[1]) - 1;
+            let year = parseInt(dateParts[2]);
+            let date = new Date(year, month, day);
+            let daysOfWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+            let dayOfWeek = daysOfWeek[date.getDay()];
+            document.querySelector('#dayOfWeek').textContent = 'День недели: ' + dayOfWeek;
+          } else {
+            document.querySelector('#dayOfWeek').textContent = 'День недели: некорректный формат даты';
+          }
+        });
+      
+      // 16
+      document.querySelector('#incrementButton').addEventListener('click', function () {
+          let input = document.querySelector('#numberInput3');
+          input.value = parseInt(input.value) + 1;
+        });
+      document.querySelector('#decrementButton').addEventListener('click', function () {
+          let input = document.querySelector('#numberInput3');
+          let currentValue = parseInt(input.value);
+          if (currentValue > 0) {
+            input.value = currentValue - 1;
+          }
+        });
+
+      // 17
+      let paragraphs2 = document.querySelectorAll('p.p17');
+        let totalClicksInput = document.querySelector('#totalClicks');
+        let totalClicks = 0;
+        for (let i = 0; i < paragraphs2.length; i++) {
+          paragraphs2[i].addEventListener('click', function () {
+            totalClicks++;
+            totalClicksInput.value = totalClicks;
+          });
+        }
+
+      // 18
+      let divs = document.querySelectorAll('div.div18');
+        divs.forEach(div => {
+          let text = div.textContent;
+          let trimmedText = text.slice(0, 10);
+          let finalText = trimmedText + '...';
+          div.textContent = finalText;
+        });
+
+      // 19
+      function generateRandomString() {
+          let randomString = Math.random().toString(36).substring(2, 10);
+          document.querySelector('#randomStringInput').value = randomString;
+      }
+
+      // 20 
+      function shuffleString() {
+          let input = document.querySelector('#inputString');
+          let stringToShuffle = input.value;
+          let shuffledString = shuffle(stringToShuffle.split('')).join('');
+          input.value = shuffledString;
+        }
+      function shuffle(array) {
+          let currentIndex = array.length;
+          let temporaryValue, randomIndex;
+          while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+          return array;
+        }
+      // 21
+      function convertTemperature() {
+          let fahrenheit = parseFloat(document.querySelector('#fahrenheitInput').value);
+          let celsius = (fahrenheit - 32) * (5 / 9);
+          document.querySelector('#resultParagraph').innerText = `Температура в Цельсиях: ${celsius.toFixed(2)} °C`;
+        }
+
+      // 22
+      function calculateFactorial() {
+          let number = parseInt(document.querySelector('#numberInput4').value);
+          let factorial = 1;
+          for (let i = 1; i <= number; i++) {
+            factorial *= i;
+          }
+          document.querySelector('#resultParagraph2').innerText = `Факториал числа ${number} равен ${factorial}`;
+        }
+    
+      // 23
+      function solveQuadraticEquation() {
+          let a = parseFloat(document.querySelector('#a').value);
+          let b = parseFloat(document.querySelector('#b').value);
+          let c = parseFloat(document.querySelector('#c').value);
+          let discriminant = b * b - 4 * a * c;
+
+          if (discriminant > 0) {
+            let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            let x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            document.querySelector('#result3').innerText = `Корни уравнения: x1 = ${x1}, x2 = ${x2}`;
+          } else if (discriminant === 0) {
+            let x = -b / (2 * a);
+            document.querySelector('#result3').innerText = `Уравнение имеет один корень: x = ${x}`;
+          } else {
+            document.querySelector('#result3').innerText = 'Уравнение не имеет действительных корней';
+          }
+        }
+    </script>
+  </body>
+</html>
